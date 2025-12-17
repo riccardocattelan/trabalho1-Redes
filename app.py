@@ -309,7 +309,7 @@ def render_sidebar():
         st.session_state.intervalo_coleta = st.slider(
             "Intervalo de Coleta (segundos)",
             min_value=0.1,
-            max_value=2.0
+            max_value=2.0,
             value=0.5,
             step=0.1
         )
