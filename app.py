@@ -8,10 +8,15 @@ from datetime import datetime
 from groq import Groq
 import plotly.express as px
 import plotly.graph_objects as go
+from dotenv import load_dotenv
+import os
 
 # ============================================================================
 # CONFIGURAÇÃO INICIAL
 # ============================================================================
+
+# Carrega variáveis de ambiente do arquivo .env
+load_dotenv()
 
 # Configuração da página do Streamlit
 st.set_page_config(
@@ -20,15 +25,16 @@ st.set_page_config(
     initial_sidebar_state="expanded"  
 )
 
-# Credenciais da API Groq para análise com IA
-GROQ_API_KEY = "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" #Open source - pode testar
-MODELO_AI = "llama-3.1-8b-instant"
+# Credenciais da API Groq carregadas do arquivo .env
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+MODELO_AI = os.getenv("MODELO_AI", "llama-3.1-8b-instant")  # Valor padrão se não estiver no .env
 
 FAST_FADING_THRESHOLD = 10              # Variação mínima em dBm para Fast Fading
 MODERATE_VARIATION_THRESHOLD = 6        # Variação mínima em dBm para Variação Moderada
 SLOW_FADING_THRESHOLD = 8               # Queda total mínima em dBm para Slow Fading
 MULTIPATH_OSCILLATION_COUNT = 3         # Número mínimo de oscilações para Multipath
 MULTIPATH_OSCILLATION_THRESHOLD = 5     # Variação mínima por oscilação em dBm
+
 
 
 # ============================================================================

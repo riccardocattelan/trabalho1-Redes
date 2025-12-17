@@ -115,40 +115,60 @@ O prompt é estruturado para fornecer:
 
 ### 5. Exportação de Dados
 - Formato CSV com todas as colunas
-- Nome de arquivo com timestamp
-- Útil para análise offline
 
 ## Configurações e Thresholds
 
 ```python
 FAST_FADING_THRESHOLD = 10          # dBm
 MODERATE_VARIATION_THRESHOLD = 6    # dBm
-SLOW_FADING_THRESHOLD = 8           # dBm (total em 5 amostras)
+SLOW_FADING_THRESHOLD = 8           # dBm 
 MULTIPATH_OSCILLATION_COUNT = 3     # número de oscilações
 MULTIPATH_OSCILLATION_THRESHOLD = 5 # dBm por oscilação
 ```
+
+## Instalação
+
+### 1. Pré-requisitos
+- Python 3.8 ou superior
+- Windows (para coleta de dados Wi-Fi via netsh)
+- Conta Groq (para API de IA)
+
+### 2. Clonar o Repositório
+```bash
+git clone https://github.com/seu-usuario/trabalho1-Redes.git
+cd trabalho1-Redes
+```
+
+### 3. Instalar Dependências
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configurar Variáveis de Ambiente
+
+#### Obter API Key do Groq:
+1. Acesse [https://console.groq.com/](https://console.groq.com/)
+2. Crie uma conta (gratuita)
+3. Gere uma API Key
+
+#### Configurar arquivo .env:
+1. Copie o arquivo de exemplo:
+```bash
+copy .env.example .env
+```
+
+2. Edite o arquivo `.env` e adicione sua API Key:
+```env
+GROQ_API_KEY=sua_api_key_aqui
+MODELO_AI=llama-3.1-8b-instant
+```
+
 ## Como Usar
 
 ### Inicialização
 ```bash
 streamlit run app.py
 ```
-
-### Workflow Típico
-1. Acesse http://localhost:8501
-2. Clique em "Iniciar / Pausar Monitoramento"
-3. Observe o gráfico em tempo real na aba "Monitoramento"
-4. Aguarde eventos serem detectados automaticamente
-5. Verifique análises de IA na aba "Análise"
-6. Consulte histórico na aba "Eventos"
-7. Exporte dados para análise offline (CSV)
-
-### Dicas de Uso
-- Ajuste o intervalo de coleta conforme necessário
-- Para capturar fast fading, use intervalos menores (0.1-0.3s)
-- Para análise de tendências, use intervalos maiores (1-2s)
-- Movimente-se pelo ambiente para gerar eventos
-- Coloque obstáculos entre o dispositivo e o roteador
 
 ## Tecnologias Utilizadas
 
