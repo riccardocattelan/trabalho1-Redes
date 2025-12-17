@@ -1,5 +1,0 @@
-instala isso dai no terminal
-pip install streamlit pandas numpy openai
-
-executa com isso no terminal
-streamlit run app.py
